@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>動畫打字機</title>
+  <style>
+    #text-container {
+      font-size: 24px;
+      overflow: hidden;
+      white-space: pre-line; /* 使用 pre-line 保留換行符號 */
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="text-container"></div>
+
+  <script>
+    const text = "親愛的老公，在這個特別的日子裡，你將展開一場充滿驚喜與神秘的尋寶之旅。我特地為你設計了這場精心策劃的尋寶遊戲，希望你在這一天充滿驚喜及歡樂。尋寶之旅將穿梭於我們的家中，憑著你對你老婆的了解，發現我們共同建構的美好回憶。現在，讓我們一同啟程，開始這場尋寶之旅吧！";
+
+    const textContainer = document.getElementById("text-container");
+    let i = 0;
+
+    function typeWriter() {
+      if (i < text.length) {
+        textContainer.innerHTML += text.charAt(i);
+        if (text.charAt(i) === '。' || text.charAt(i) === '！' || text.charAt(i) === '？') {
+          textContainer.innerHTML += '<br>'; // 遇到標點符號時換行
+        }
+        i++;
+        setTimeout(typeWriter, 50); // 調整打字速度，這裡是50毫秒
+      }
+    }
+
+    typeWriter();
+  </script>
+</body>
+</html>
